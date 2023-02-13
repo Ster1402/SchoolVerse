@@ -1,48 +1,60 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { createBrowserRouter,createRoutesFromElements, RouterProvider, Route, Outlet} from "react-router-dom/dist/index";
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
+  Outlet,
+} from 'react-router-dom/dist/index';
+import ForgottenPasswordPage from './pages/auth/ForgottenPasswordPage';
+import LoginPage from './pages/auth/LoginPage';
+import RegisterPage from './pages/auth/RegisterPage';
+import Dashboard from './pages/Dashboard';
+import HomePage from './pages/HomePage';
+import LandingPage from './pages/LandingPage';
+import {
+  ROUTE_DASHBOARD,
+  ROUTE_FORGOTTEN_PASSWORD,
+  ROUTE_HOME,
+  ROUTE_LANDING,
+  ROUTE_LOGIN,
+  ROUTE_REGISTER,
+} from './utils/contants';
 
-const router = createBrowserRouter(
-    createRoutesFromElements(
-        <Route>
-            <Route index element={<Landing />} />
-            <Route path="landing" element={<Landing />} />
- 
-            <Route>
-                <Route path="login" element={<Login />} />
-                <Route path="signup" element={<SignUp />} />
-                <Route path="forgot_pass" element={<Forgotten_password />} />
-            </Route>
+const ProtectedRoute = ({
+  isAllowed,
+  redirectPath = ROUTE_LANDING,
+  children,
+}) => {
+  // if (!isAllowed) {
+  //   return <Navigate to={redirectPath} replace />;
+  // }
 
-            <Route element={<ProtectedRoute isAllowed={!!user} />}>
-                <Route path="home" element={<Home />} />
-                <Route path="dashboard" element={<Dashboard />} />
-            </Route>
+  return children ? children : <Outlet />;
+};
 
-            <Route path="*" element={ <NoMatch />} />
-        </Route>
-    )
-  );
+const NoMatch = () => {
+  return <p>There's nothing here: 404!</p>;
+};
 
-  const ProtectedRoute = ({
-    isAllowed,
-    redirectPath = '/landing',
-    children,
-  }) => {
-    if (!isAllowed) {
-      return <Navigate to={redirectPath} replace />;
-    }
-  
-    return children ? children : <Outlet />;
-  };
-  
-  const NoMatch = () => {
-    return (<p>There's nothing here: 404!</p>);
-  };
-  
-  const root = ReactDOM.createRoot(document.getElementById("root"));
-  root.render(
-    <React.StrictMode>
-      <RouterProvider router={router} />
-    </React.StrictMode>
-  );
+export const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path='/'>
+      <Route index path={ROUTE_LANDING} element={<LandingPage />} />
+
+      <Route>
+        <Route path={ROUTE_LOGIN} element={<LoginPage />} />
+        <Route path={ROUTE_REGISTER} element={<RegisterPage />} />
+        <Route
+          path={ROUTE_FORGOTTEN_PASSWORD}
+          element={<ForgottenPasswordPage />}
+        />
+      </Route>
+
+      <Route element={<ProtectedRoute isAllowed={/*!!user*/ true} />}>
+        <Route path={ROUTE_HOME} element={<HomePage />} />
+        <Route path={ROUTE_DASHBOARD} element={<Dashboard />} />
+      </Route>
+
+      <Route path="*" element={<NoMatch />} />
+    </Route>
+  )
+);

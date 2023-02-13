@@ -1,9 +1,0 @@
-{
-  "name": "SchoolVerse",
-  "version": "1.0.0",
-  "description": "E-learning plateforme",
-  "main": "index.js",
-  "repository": "https://github.com/Ster1402/SchoolVerse.git",
-  "author": "NDE TSAPI STEVE-ROLAND <56319959+Ster1402@users.noreply.github.com>",
-  "license": "MIT"
-}
