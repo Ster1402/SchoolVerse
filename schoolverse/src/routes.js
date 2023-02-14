@@ -1,5 +1,6 @@
 import Loading from 'components/Loading';
 import Splash from 'components/Splash';
+import AuthPreview from 'pages/auth/AuthPreview';
 import PageNotFound from 'pages/PageNotFound';
 import {
   createBrowserRouter,
@@ -15,6 +16,7 @@ import Dashboard from './pages/Dashboard';
 import HomePage from './pages/HomePage';
 import LandingPage from './pages/LandingPage';
 import {
+  ROUTE_AUTH_PREVIEW,
   ROUTE_DASHBOARD,
   ROUTE_FORGOTTEN_PASSWORD,
   ROUTE_HOME,
@@ -33,19 +35,19 @@ const ProtectedRoute = ({
   if (!isAllowed) {
     return <Navigate to={redirectPath} replace />;
   }
-  
+
   return children ? children : <Outlet />;
 };
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
     <Route>
-
       <Route index path={ROUTE_SPLASH} element={<Splash />} />
       <Route index path={ROUTE_LOADING} element={<Loading />} />
       <Route path={ROUTE_LANDING} element={<LandingPage />} />
 
       <Route>
+        <Route path={ROUTE_AUTH_PREVIEW} element={<AuthPreview />} />
         <Route path={ROUTE_LOGIN} element={<LoginPage />} />
         <Route path={ROUTE_REGISTER} element={<RegisterPage />} />
         <Route
