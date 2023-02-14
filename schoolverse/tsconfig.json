@@ -24,6 +24,6 @@
       "styles/*": ["./styles/*", "./styles"]
     }
   },
-  "include": ["**/*.ts", "**/*.tsx"],
+  "include": ["**/*.ts", "**/*.tsx", "src/index.js", "src/App.js"],
   "exclude": ["node_modules"]
 }

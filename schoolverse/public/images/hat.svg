@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="572.659" height="402.482" viewBox="0 0 572.659 402.482">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_1126" data-name="Rectangle 1126" width="520.078" height="293" fill="rgba(196,252,220,0.44)"/>
+    </clipPath>
+  </defs>
+  <g id="hat_illutration_for_splash_screen" data-name="hat illutration for splash screen" transform="translate(0 116.992) rotate(-13)">
+    <g id="Groupe_60" data-name="Groupe 60" transform="translate(0 0)" clip-path="url(#clip-path)">
+      <path id="Tracé_340" data-name="Tracé 340" d="M520.078,125.778v13.694L414.822,189.851s4.5-37.067-101.16-49.5c0,0-89.414-5.8-127.806,3.855,0,0,189.37-7.851,228.966,53.873V293s-51.283-24.316-154.773-24.878C156.58,268.683,105.257,293,105.257,293V189.851L0,139.472V125.778L260.049,0Z" transform="translate(0 -0.008)" fill="rgba(196,252,220,0.44)"/>
+      <path id="Tracé_341" data-name="Tracé 341" d="M25.722,42.127V58.11H0V42.127c0-4.4,9.036-6.747,9.036-6.747V2.63L16.686,0V35.38s9.036,2.349,9.036,6.747" transform="translate(457.551 183.498)" fill="rgba(196,252,220,0.44)"/>
+      <path id="Tracé_342" data-name="Tracé 342" d="M48.793,29.8H42.749a33.714,33.714,0,0,0-6.486-9.879A37.1,37.1,0,0,0,32.529,29.8H0C1.767,13.513,10,0,10,0H38.773s8.233,13.513,10.02,29.8" transform="translate(446.648 249.037)" fill="rgba(196,252,220,0.44)"/>
+    </g>
+  </g>
+</svg>

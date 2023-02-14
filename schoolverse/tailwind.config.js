@@ -25,6 +25,10 @@ module.exports = {
       // => @media (min-width: 1536px) { ... }
     },
     extend: {
+      backgroundImage: {
+        pattern: "url('./assets/images/pattern.svg')",
+        hat: "url('./assets/images/hat.svg')"
+      },
       container: {
         center: true,
         padding: {
@@ -46,8 +50,8 @@ module.exports = {
       },
       colors: {
         white: '#ffffff',
-        primary: '#2C7CBB',
-        secondary: '#418106',
+        primary: '#204D52',
+        secondary: '#C4FCDC',
         'app-green': '#008100',
       },
     },

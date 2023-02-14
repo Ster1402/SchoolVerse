@@ -1,8 +1,12 @@
+import Loading from 'components/Loading';
+import Splash from 'components/Splash';
+import PageNotFound from 'pages/PageNotFound';
 import {
   createBrowserRouter,
   createRoutesFromElements,
   Route,
   Outlet,
+  Navigate,
 } from 'react-router-dom/dist/index';
 import ForgottenPasswordPage from './pages/auth/ForgottenPasswordPage';
 import LoginPage from './pages/auth/LoginPage';
@@ -15,30 +19,31 @@ import {
   ROUTE_FORGOTTEN_PASSWORD,
   ROUTE_HOME,
   ROUTE_LANDING,
+  ROUTE_LOADING,
   ROUTE_LOGIN,
   ROUTE_REGISTER,
+  ROUTE_SPLASH,
 } from './utils/contants';
 
 const ProtectedRoute = ({
   isAllowed,
-  redirectPath = ROUTE_LANDING,
+  redirectPath = ROUTE_SPLASH,
   children,
 }) => {
-  // if (!isAllowed) {
-  //   return <Navigate to={redirectPath} replace />;
-  // }
-
+  if (!isAllowed) {
+    return <Navigate to={redirectPath} replace />;
+  }
+  
   return children ? children : <Outlet />;
-};
-
-const NoMatch = () => {
-  return <p>There's nothing here: 404!</p>;
 };
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path='/'>
-      <Route index path={ROUTE_LANDING} element={<LandingPage />} />
+    <Route>
+
+      <Route index path={ROUTE_SPLASH} element={<Splash />} />
+      <Route index path={ROUTE_LOADING} element={<Loading />} />
+      <Route path={ROUTE_LANDING} element={<LandingPage />} />
 
       <Route>
         <Route path={ROUTE_LOGIN} element={<LoginPage />} />
@@ -49,12 +54,12 @@ export const router = createBrowserRouter(
         />
       </Route>
 
-      <Route element={<ProtectedRoute isAllowed={/*!!user*/ true} />}>
+      <Route element={<ProtectedRoute isAllowed={/*!!user*/ false} />}>
         <Route path={ROUTE_HOME} element={<HomePage />} />
         <Route path={ROUTE_DASHBOARD} element={<Dashboard />} />
       </Route>
 
-      <Route path="*" element={<NoMatch />} />
+      <Route path="*" element={<PageNotFound />} />
     </Route>
   )
 );
